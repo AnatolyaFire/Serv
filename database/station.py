@@ -9,6 +9,18 @@ class StationDatabase(Database):
     def __init__(self):
         super().__init__()
         self.table = sqlalchemy.Table("station", self.metadata)
+        self.connection.execute(text(
+                    '''CREATE TABLE IF NOT EXISTS station (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        namestaiton VARCHAR(55) NOT NULL,
+                        timeopen TIME,
+                        timeclose TIME,
+                        idstr INT NOT NULL,
+                        FOREIGN KEY (idstr)
+                            REFERENCES street (id)
+                    );''')
+        )
+        self.connection.commit()
 
     def select(self, data: {}):     #select запрос, видоизменяющийся в зависимости от входных параметров
         SSQL = f'SELECT  station.namestaiton, station.timeopen, station.timeclose, street.namestr, (SELECT namecity FROM city WHERE (street.idcity = id)) AS CityName FROM station LEFT JOIN street ON station.idstr = street.id'
@@ -19,7 +31,7 @@ class StationDatabase(Database):
             SSQL = SSQL + ' HAVING ('
             if data['namecity']: SSQL = SSQL + f"CityName = '{data['namecity']}' AND "
             if data['namestr']: SSQL = SSQL + f"namestr = '{data['namestr']}' AND "
-            if data['is_open'] == 1: SSQL = SSQL + "timeopen < (current_time() AND timeclose > current_time()) AND "
+            if data['is_open'] == 1: SSQL = SSQL + "(timeopen < current_time() AND timeclose > current_time()) AND "
             elif data['is_open'] == 0: SSQL = SSQL + "(timeopen > current_time() OR timeclose < current_time()) AND "
             SSQL = SSQL[:-5]
             _SQL = text(SSQL + ");")

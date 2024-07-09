@@ -1,7 +1,7 @@
 import uvicorn
 from typing import Optional
 from fastapi import FastAPI
-
+from database import Database
 from database.city import CityDatabase
 from database.models import NewStation
 from database.street import StreetDatabase
@@ -13,6 +13,7 @@ app = FastAPI(
     description="STO",
     version="1.0.0"
 )
+
 cityDB = CityDatabase()
 streetDB = StreetDatabase()
 stationDB = StationDatabase()
