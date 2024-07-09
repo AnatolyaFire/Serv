@@ -1,0 +1,33 @@
+#код, позволяющий заполнить таблицы БД тестовыми данными
+
+
+INSERT INTO `serv`.`city` (`namecity`) VALUES ('Samara');
+INSERT INTO `serv`.`city` (`namecity`) VALUES ('Rostov-na-Donu');
+INSERT INTO `serv`.`city` (`namecity`) VALUES ('Kirov');
+INSERT INTO `serv`.`city` (`namecity`) VALUES ('Moscow');
+INSERT INTO `serv`.`city` (`namecity`) VALUES ('Kazan');
+INSERT INTO `serv`.`city` (`namecity`) VALUES ('Ufa');
+
+INSERT INTO `serv`.`street` (`idcity`, `namestr`) VALUES ('1', 'Leninskaya');
+INSERT INTO `serv`.`street` (`idcity`, `namestr`) VALUES ('1', 'Polevaya');
+INSERT INTO `serv`.`street` (`idcity`, `namestr`) VALUES ('1', 'Novo-Sadovaya');
+INSERT INTO `serv`.`street` (`idcity`, `namestr`) VALUES ('2', 'Str2_1');
+INSERT INTO `serv`.`street` (`idcity`, `namestr`) VALUES ('2', 'Str2_2');
+INSERT INTO `serv`.`street` (`idcity`, `namestr`) VALUES ('2', 'Str2_3');
+INSERT INTO `serv`.`street` (`idcity`, `namestr`) VALUES ('3', 'Str3_1');
+INSERT INTO `serv`.`street` (`idcity`, `namestr`) VALUES ('3', 'Str3_2');
+INSERT INTO `serv`.`street` (`idcity`, `namestr`) VALUES ('3', 'Str3_3');
+INSERT INTO `serv`.`street` (`idcity`, `namestr`) VALUES ('4', 'Str4_1');
+INSERT INTO `serv`.`street` (`idcity`, `namestr`) VALUES ('5', 'Str5_1');
+INSERT INTO `serv`.`street` (`idcity`, `namestr`) VALUES ('5', 'Str5_2');
+INSERT INTO `serv`.`street` (`idcity`, `namestr`) VALUES ('6', 'Str6_1');
+
+INSERT INTO `serv`.`station` (`namestaiton`, `nhouse`, `timeopen`, `timeclose`, `idstr`) VALUES ('SamSTO', '2', '10:00:00', '22:00:00', '1');
+INSERT INTO `serv`.`station` (`namestaiton`, `nhouse`, `timeopen`, `timeclose`, `idstr`) VALUES ('SamSTO', '21', '10:00:00', '22:00:00', '3');
+INSERT INTO `serv`.`station` (`namestaiton`, `nhouse`, `timeopen`, `timeclose`, `idstr`) VALUES ('SamSTO', '43', '10:00:00', '22:00:00', '3');
+INSERT INTO `serv`.`station` (`namestaiton`, `nhouse`, `timeopen`, `timeclose`, `idstr`) VALUES ('SamSTO', '2', '10:00:00', '22:00:00', '2');
+INSERT INTO `serv`.`station` (`namestaiton`, `nhouse`, `timeopen`, `timeclose`, `idstr`) VALUES ('Cit2STO', '6', '11:00:00', '22:00:00', '4');
+INSERT INTO `serv`.`station` (`namestaiton`, `nhouse`, `timeopen`, `timeclose`, `idstr`) VALUES ('Cit2STO', '5', '11:00:00', '22:00:00', '4');
+INSERT INTO `serv`.`station` (`namestaiton`, `nhouse`, `timeopen`, `timeclose`, `idstr`) VALUES ('Sit3STO', '32', '10:30:00', '22:30:00', '7');
+INSERT INTO `serv`.`station` (`namestaiton`, `nhouse`, `timeopen`, `timeclose`, `idstr`) VALUES ('Sit3STO', '4', '10:30:00', '22:30:00', '9');
+

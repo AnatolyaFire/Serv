@@ -1,12 +1,10 @@
 import uvicorn
 from typing import Optional
 from fastapi import FastAPI
-from database import Database
 from database.city import CityDatabase
 from database.models import NewStation
 from database.street import StreetDatabase
 from database.station import StationDatabase
-from sqlalchemy import select
 
 app = FastAPI(
     title="STO",
@@ -19,22 +17,22 @@ streetDB = StreetDatabase()
 stationDB = StationDatabase()
 
 
-@app.get("/city")
+@app.get("/city")       #получение всех городов из базы
 async def root():
     return {'data': cityDB.select()}
 
 
-@app.get("/city/street/{city_id}")
+@app.get("/city/street/{city_id}")      #получение всех улиц города по city_id
 async def street(city_id: int):
     return {'data': streetDB.select(city_id)}
 
 
-@app.post("/shop")
+@app.post("/shop")      #создание магазина
 async def add_shop(data: NewStation):
     return {'data': stationDB.insert(data)}
 
 
-@app.get("/shop/")
+@app.get("/shop/")      #получение списка магазина по параметрам
 async def shop(
         street: Optional[str] = None,
         city: Optional[str] = None,
