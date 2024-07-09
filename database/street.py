@@ -10,7 +10,7 @@ class StreetDatabase(Database):
         self.table = sqlalchemy.Table("street", self.metadata)
         self.connection.execute(
             text(
-                '''CREATE TABLE IF NOT EXISTS street3 (
+                '''CREATE TABLE IF NOT EXISTS street (
                     id INT AUTO_INCREMENT PRIMARY KEY,
                     idcity INT NOT NULL,
                     FOREIGN KEY (idcity)
