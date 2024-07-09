@@ -25,7 +25,7 @@ class StationDatabase(Database):
     def select(self, data: {}):     #select запрос, видоизменяющийся в зависимости от входных параметров
         SSQL = f'SELECT  station.namestaiton, station.timeopen, station.timeclose, street.namestr, (SELECT namecity FROM city WHERE (street.idcity = id)) AS CityName FROM station LEFT JOIN street ON station.idstr = street.id'
 
-        if not data:
+        if data['namecity'] is None and data['namestr'] is None and data['is_open'] is None:
             _SQL = text(SSQL+';')
         else:
             SSQL = SSQL + ' HAVING ('

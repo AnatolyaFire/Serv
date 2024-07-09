@@ -1,16 +1,29 @@
 import uvicorn
 from typing import Optional
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from database.city import CityDatabase
 from database.models import NewStation
 from database.street import StreetDatabase
 from database.station import StationDatabase
+from fastapi.responses import JSONResponse
 
 app = FastAPI(
     title="STO",
     description="STO",
     version="1.0.0"
 )
+
+@app.exception_handler(Exception)
+async def validation_exception_handler(request: Request, exc: Exception):
+    return JSONResponse(
+        status_code=400,
+        content={
+            "message": (
+                f"Failed method {request.method} at URL {request.url}."
+                f" Exception message is {exc!r}."
+            )
+        },
+    )
 
 cityDB = CityDatabase()
 streetDB = StreetDatabase()

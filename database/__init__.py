@@ -7,9 +7,11 @@ class Database:
         self.url_object = URL.create(
             "mysql+pymysql",
             username="root",
-            password="Edgar123321",
+
+            password="Edgar123321",     #---необходимо вставить свой свой пароль от аккаунта root в MySQL
             host="127.0.0.1",
-            database="serv",
+
+            database="serv",            #---необходимо указать название свой базы данных или создать под названием serv
         )
         self.engine = sqlalchemy.create_engine(
             url=self.url_object,
